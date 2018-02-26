@@ -8,26 +8,33 @@
       <div class="card">
           <div class="card-body">
               <h5 class="card-title text-uppercase">{{survey.type}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{survey.label}}</h6> 
-              <div id="chart-wrapper" *ngIf="survey.type === 'qcm'">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Value</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let product of survey.result" >
-                      <td>{{product.name}}</td>
-                      <td>{{product.value}}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <h6 class="card-subtitle text-muted">{{survey.label}}</h6> 
+              <div id="chart-wrapper" class="row" *ngIf="survey.type === 'qcm'">
+                <div class="col-md-4">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Products</th>
+                        <th>Count</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let product of survey.result" >
+                        <td>{{product.name}}</td>
+                        <td><strong>{{product.value}}</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-8">
+                  <canvas id="chart" appChart [attr.data-value]="surveyValue" [attr.data-label]="surveyLabel"></canvas>
+                </div>
               </div>
-              <div id="number" *ngIf="survey.type === 'numeric'">{{survey.result}}</div>
-              <div id="number" *ngIf="survey.type === 'date'">
-                  <table>
+              <div id="number" *ngIf="survey.type === 'numeric'">
+                <a href="" class="btn disabled" [ngClass]="{'btn-primary': survey.result <= 7000, 'btn-warning': survey.result <= 5000, 'btn-danger': survey.result <= 1000}">{{survey.result}}</a>
+              </div>
+              <div id="date" *ngIf="survey.type === 'date'">
+                  <table class="table">
                     <thead>
                       <tr>
                         <th>Date</th>
@@ -36,8 +43,8 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let date of survey.result" >
-                        <td>{{date | dateParser:date}}</td>
-                        <td>{{date | dateParser:hour}}</td>
+                        <td>{{date | date:"yyyy/dd/MM"}}</td>
+                        <td>{{date | date:"HH:mm"}}</td>
                       </tr>
                     </tbody>
                   </table>

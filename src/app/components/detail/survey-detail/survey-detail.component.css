@@ -1,0 +1,15 @@
+.result {
+  margin-bottom: 20px;
+}
+.result .card {
+  min-height: 395px;
+}
+.btn.disabled, .btn:disabled {
+  opacity: 1;
+}
+.card h6 {
+  margin-bottom: 30px;
+}
+table {
+  border: solid 1px #dee2e6;
+}

@@ -3,17 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonPipeModule } from './pipes/common-pipe.module';
-
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    CommonPipeModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
