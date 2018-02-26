@@ -1,0 +1,12 @@
+body {
+  background-color: #f5f5f5;
+}
+.date {
+  color: #ccc;
+}
+.card-body {
+  min-height: 337px;
+}
+.active-link {
+  color: #fff!important;
+}

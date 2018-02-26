@@ -4,7 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'survey',
-    loadChildren: 'app/components/list/list.module#ListModule'
+    loadChildren: 'app/components/survey/survey.module#SurveyModule'
+  },
+  {
+    path: 'survey/detail',
+    loadChildren: 'app/components/detail/detail.module#DetailModule'
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 
