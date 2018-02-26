@@ -3,11 +3,8 @@
     <a class="navbar-brand" href="#">Survey</a>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a [routerLink]="['/']" title="go to list" [routerLinkActive]="'active-link'" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a [routerLink]="['/survey']" title="go to list" [routerLinkActive]="'active-link'" class="nav-link">List of survey</a>
+        <li class="nav-item" [routerLinkActive]="'active'">
+          <a [routerLink]="['/survey']" title="go to list" class="nav-link">List of survey</a>
         </li>
       </ul>
     </div>
