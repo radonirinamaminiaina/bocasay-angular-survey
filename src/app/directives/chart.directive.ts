@@ -35,7 +35,7 @@ export class ChartDirective {
         options: {
           responsive: true
         }
-      }
+      };
       // build chart
       const chart = new Chart(canvas.getContext('2d'), options);
     }
