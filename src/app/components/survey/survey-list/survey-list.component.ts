@@ -8,7 +8,7 @@ import { Survey } from '../../../interface/Survey';
   styleUrls: ['./survey-list.component.css']
 })
 export class SurveyListComponent implements OnInit {
-  private surveys: Survey;
+  private surveys: Survey[];
   constructor() { }
 
   ngOnInit() {
@@ -17,7 +17,7 @@ export class SurveyListComponent implements OnInit {
 
   async fetchList () {
     const data = await fetch(config.api.list);
-    const json = await data.json();
-    this.surveys = json;
+    const finalData = await data.json();
+    this.surveys = finalData;
   }
 }

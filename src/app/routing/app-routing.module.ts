@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: 'app/components/survey/survey.module#SurveyModule'
   },
   {
-    path: 'survey/detail',
+    path: 'survey/:id',
     loadChildren: 'app/components/detail/detail.module#DetailModule'
   },
   {

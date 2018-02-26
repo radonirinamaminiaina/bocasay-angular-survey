@@ -1,3 +1,50 @@
-<p>
-  survey-detail works!
-</p>
+<div class="container detail">
+  <h1>Detail {{param}}</h1>
+  <p>
+    <a [routerLink]="['/survey']" class="btn btn-success">Back to list</a>
+  </p>
+  <div class="row">
+    <div class="result" *ngFor="let survey of surveyDetail; let i = index" [ngClass]="{'col-md-6': i > 0, 'col-md-12': i == 0}">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="card-title text-uppercase">{{survey.type}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{survey.label}}</h6> 
+              <div id="chart-wrapper" *ngIf="survey.type === 'qcm'">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of survey.result" >
+                      <td>{{product.name}}</td>
+                      <td>{{product.value}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="number" *ngIf="survey.type === 'numeric'">{{survey.result}}</div>
+              <div id="number" *ngIf="survey.type === 'date'">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Hours</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let date of survey.result" >
+                        <td>{{date | dateParser:date}}</td>
+                        <td>{{date | dateParser:hour}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
