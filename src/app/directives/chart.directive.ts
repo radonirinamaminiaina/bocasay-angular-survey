@@ -12,7 +12,7 @@ export class ChartDirective {
 
   async drawChart (el) {
     const canvas = <HTMLCanvasElement> el.nativeElement;
-    console.log(canvas);
+
     if (canvas.tagName === 'CANVAS') {
       const Chart = await import('chart.js');
       const parseJson = (json) => JSON.parse(json);

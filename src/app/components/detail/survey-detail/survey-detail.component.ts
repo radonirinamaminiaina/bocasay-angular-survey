@@ -9,9 +9,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./survey-detail.component.css']
 })
 export class SurveyDetailComponent implements OnInit {
-  private surveyDetail: SurveyDetail[];
-  private surveyLabel: string;
-  private surveyValue: string;
+  surveyDetail: SurveyDetail[];
+  surveyLabel: string;
+  surveyValue: string;
+  param: string;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -23,27 +24,24 @@ export class SurveyDetailComponent implements OnInit {
     const dataFetch = async (params) => {
       const data = await fetch(config.api.base(params['id']));
       const finalData = await data.json();
-      const tmpQcmLabel = [];
-      const tmpQcmValue = [];
-      const tmpQcmArray = [];
 
       finalData.forEach((element: SurveyDetail) => {
         if (element.result.constructor === Object) {
-          const map = Object.keys(element.result).map((item): any => {
-            tmpQcmLabel.push(item);
-            tmpQcmValue.push(element.result[item]);
-            tmpQcmArray.push({
+          const result = Object.keys(element.result).map((item): any => {
+            return {
               name: item,
               value: element.result[item]
-            });
+            };
           });
-          this.surveyLabel = JSON.stringify(tmpQcmLabel);
-          this.surveyValue = JSON.stringify(tmpQcmValue);
-          element.result = tmpQcmArray;
+          this.surveyLabel = JSON.stringify(Object.getOwnPropertyNames(element.result));
+          this.surveyValue = JSON.stringify(Object.values(element.result));
+
+          element.result = result;
         }
       });
-      console.log(finalData);
+
       this.surveyDetail = finalData;
+      this.param = params['id'];
     };
     this.route.params.subscribe(dataFetch);
   }

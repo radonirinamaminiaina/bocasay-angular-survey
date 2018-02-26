@@ -8,7 +8,7 @@ import { Survey } from '../../../interface/Survey';
   styleUrls: ['./survey-list.component.css']
 })
 export class SurveyListComponent implements OnInit {
-  private surveys: Survey[];
+  surveys: Survey[];
   constructor() { }
 
   ngOnInit() {
