@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { config } from '../../../config/config';
-import { Survey } from '../../../interface/Survey';
+import { Survey } from '../../../model/Survey';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-survey-list',
@@ -9,18 +10,11 @@ import { Survey } from '../../../interface/Survey';
 })
 export class SurveyListComponent implements OnInit {
   surveys: Survey[];
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.fetchList();
-  }
-  /**
-   * fetchList
-   * fetch list of survey
-   */
-  async fetchList () {
-    const data = await fetch(config.api.list);
-    const finalData = await data.json();
-    this.surveys = finalData;
+    this.route.data.subscribe((data: { listSurvey: Survey[]}) => {
+      this.surveys = data.listSurvey;
+    });
   }
 }
