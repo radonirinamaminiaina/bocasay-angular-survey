@@ -85,22 +85,26 @@ export class SurveyDetailComponent implements OnInit {
       }
     });
   }
-  sort (caretUp: HTMLElement, caretDown: HTMLElement) {
+  sort (tableType: string, caretUp: HTMLElement, caretDown: HTMLElement) {
     const changeCaretStatus = (visible: string, invisible: string) => {
       caretUp.style.display = visible;
       caretDown.style.display = invisible;
     };
     this.surveyDetail.forEach(item => {
-      if (item.type === 'date') {
-        if (this.sortParams) {
-          this.sortParams = false;
-          item.result.reverse();
-          changeCaretStatus('none', 'inline-block');
-        } else {
-          this.sortParams = true;
-          item.result.sort();
-          changeCaretStatus('inline-block', 'none');
+      if (tableType === 'date') {
+        if (item.type === 'date') {
+          if (this.sortParams) {
+            this.sortParams = false;
+            item.result.reverse();
+            changeCaretStatus('none', 'inline-block');
+          } else {
+            this.sortParams = true;
+            item.result.sort();
+            changeCaretStatus('inline-block', 'none');
+          }
         }
+      } else {
+        console.log('not date');
       }
     });
   }

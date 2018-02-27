@@ -27,8 +27,8 @@
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>Products <i class="fa fa-caret-up" #caretUp></i><i class="fa fa-caret-down" #caretDown></i></th>
-                        <th>Count <i class="fa fa-caret-up" #caretUp></i><i class="fa fa-caret-down" #caretDown></i></th>
+                        <th (click)="sort('product', caretUp, caretDown)">Products <i class="fa fa-caret-up" #caretUp></i><i class="fa fa-caret-down" #caretDown></i></th>
+                        <th>Count</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -58,7 +58,7 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th (click)="sort(caretUp, caretDown)">Date <i class="fa fa-caret-up" #caretUp></i><i class="fa fa-caret-down" #caretDown></i></th>
+                      <th (click)="sort('date', caretUp, caretDown)">Date <i class="fa fa-caret-up" #caretUp></i><i class="fa fa-caret-down" #caretDown></i></th>
                       <th>Hours</th>
                     </tr>
                   </thead>
