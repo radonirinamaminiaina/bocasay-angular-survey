@@ -13,8 +13,8 @@ export class SurveyListComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.data.subscribe((data: { listSurvey: Survey[]}) => {
-      this.surveys = data.listSurvey;
+    this.route.data.subscribe((data: { list: Survey[]}) => {
+      this.surveys = data.list;
     });
   }
 }

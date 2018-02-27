@@ -26,11 +26,9 @@ export class SurveyDetailComponent implements OnInit {
    */
   fetchDetail (): void {
     // use async and await to retrieve data json detail
-    const dataFetch = async (id: string) => {
-      const data = await fetch(config.api.base(id));
-      const finalData = await data.json();
-      // loop through our finalData
-      finalData.forEach((element: SurveyDetail) => {
+    const dataFetch = (data: SurveyDetail[]) => {
+      // loop through our data
+      data.forEach((element: SurveyDetail) => {
         if (element.result.constructor === Object) {
           // use map() to rebuild data because angular only know to loop through array
           // object return from element.result is an Object not an Array
@@ -49,10 +47,10 @@ export class SurveyDetailComponent implements OnInit {
           element.result = result;
         }
       });
-      this.surveyDetail = finalData;
-      this.param = id;
+      this.surveyDetail = data;
     };
-    this.route.params.subscribe(params => dataFetch(params['id']));
+    this.route.data.subscribe((data: { detail: SurveyDetail[]}) => dataFetch(data.detail));
+    this.route.params.subscribe(params => this.param = params['id']);
   }
 
 }

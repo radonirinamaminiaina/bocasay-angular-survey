@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: SurveyListComponent,
     resolve: {
-      listSurvey: ListService
+      list: ListService
     }
   }
 ];
