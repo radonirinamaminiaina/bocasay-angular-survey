@@ -1,5 +1,41 @@
 body {
   background-color: #f5f5f5;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: #777;
+}
+.btn {
+  font-size: 11px;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.big-title {
+  margin-left: 200px;
+  padding-left: 20px;
+  background-color: #4296f3;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+.big-title h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 50px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.big-title + .container {
+  margin-top: 65px;
+}
+.form-control {
+  font-size: 15px;
+}
+#page {
+  max-width: 1440px;
+}
+#page .container {
+  margin-left: 200px;
 }

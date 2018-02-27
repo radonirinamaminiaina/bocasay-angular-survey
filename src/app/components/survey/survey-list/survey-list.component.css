@@ -2,6 +2,8 @@
   background-color: #fff;
   margin-top: 20px;
   max-width: 650px;
+}
+.table-wrapper table {
   border: solid 1px #dee2e6;
 }
 .table-wrapper td:last-child, .table-wrapper th:last-child {
