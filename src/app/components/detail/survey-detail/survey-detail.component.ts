@@ -44,9 +44,12 @@ export class SurveyDetailComponent implements OnInit {
           // get return property name with Object.getOwnPropertyNames
           // it returns the properties into an Array
           this.surveyLabel = Object.getOwnPropertyNames(element.result);
+          // sort our label
+          this.surveyLabel.sort();
           // get value and return Array of value
           this.surveyValue = Object.values(element.result);
           element.result = result;
+          // it will be used on filter
           this.filterSurvey = result;
         }
       });
@@ -56,11 +59,14 @@ export class SurveyDetailComponent implements OnInit {
     this.route.params.subscribe(params => this.param = params['id']);
   }
   filter (survey: Qcm[], value: string | number) {
+    // Deep copy
     const copySurvey = [...this.filterSurvey];
     let filtered: Qcm[] = copySurvey;
     if (+value !== 0 && value !== '') {
+      // return filtered element according to the criteria of search field
       filtered = this.filterSurvey.filter(item => +value === +item.value);
     }
+    // rebuild our data according to the filtered data
     this.surveyDetail.forEach(item => {
       if (item.type === 'qcm') {
         item.result = filtered;
