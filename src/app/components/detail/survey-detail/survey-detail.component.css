@@ -13,3 +13,12 @@
 table {
   border: solid 1px #dee2e6;
 }
+#filter {
+  margin-bottom: 20px;
+}
+#filter label {
+  margin-right: 10px;
+}
+.alert {
+  margin: 0;
+}

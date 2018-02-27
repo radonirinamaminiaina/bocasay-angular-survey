@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyDetail } from '../../../model/survey-detail';
 import { config } from '../../../config/config';
 import { ActivatedRoute } from '@angular/router';
+import { Qcm } from '../../../model/survey-qcm';
 
 @Component({
   selector: 'app-survey-detail',
@@ -9,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./survey-detail.component.css']
 })
 export class SurveyDetailComponent implements OnInit {
+  private filterSurvey: Qcm[];
   surveyDetail: SurveyDetail[];
-  surveyLabel: string;
-  surveyValue: string;
+  surveyLabel: string[];
+  surveyValue: number[];
   param: string;
 
   constructor(private route: ActivatedRoute) { }
@@ -41,10 +43,11 @@ export class SurveyDetailComponent implements OnInit {
           });
           // get return property name with Object.getOwnPropertyNames
           // it returns the properties into an Array
-          this.surveyLabel = JSON.stringify(Object.getOwnPropertyNames(element.result));
+          this.surveyLabel = Object.getOwnPropertyNames(element.result);
           // get value and return Array of value
-          this.surveyValue = JSON.stringify(Object.values(element.result));
+          this.surveyValue = Object.values(element.result);
           element.result = result;
+          this.filterSurvey = result;
         }
       });
       this.surveyDetail = data;
@@ -52,5 +55,16 @@ export class SurveyDetailComponent implements OnInit {
     this.route.data.subscribe((data: { detail: SurveyDetail[]}) => dataFetch(data.detail));
     this.route.params.subscribe(params => this.param = params['id']);
   }
-
+  filter (survey: Qcm[], value: string | number) {
+    const copySurvey = [...this.filterSurvey];
+    let filtered: Qcm[] = copySurvey;
+    if (+value !== 0 && value !== '') {
+      filtered = this.filterSurvey.filter(item => +value === +item.value);
+    }
+    this.surveyDetail.forEach(item => {
+      if (item.type === 'qcm') {
+        item.result = filtered;
+      }
+    });
+  }
 }
