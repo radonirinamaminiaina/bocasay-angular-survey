@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../components/home/home.component';
+import { ErrorComponent } from '../components/error/error.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
+    component: HomeComponent
+  },
   {
     path: 'survey',
     loadChildren: 'app/components/survey/survey.module#SurveyModule'
@@ -12,10 +19,8 @@ const routes: Routes = [
     loadChildren: 'app/components/detail/detail.module#DetailModule'
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full',
-    component: HomeComponent
+    path: '**',
+    component: ErrorComponent
   }
 ];
 
