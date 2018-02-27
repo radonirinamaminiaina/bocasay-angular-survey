@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Survey } from '../model/survey';
 import { config } from '../config/config';
 
