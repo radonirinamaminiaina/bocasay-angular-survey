@@ -95,11 +95,11 @@ export class SurveyDetailComponent implements OnInit {
         if (this.sortParams) {
           this.sortParams = false;
           item.result.reverse();
-          changeCaretStatus('inline-block', 'none');
+          changeCaretStatus('none', 'inline-block');
         } else {
           this.sortParams = true;
           item.result.sort();
-          changeCaretStatus('none', 'inline-block');
+          changeCaretStatus('inline-block', 'none');
         }
       }
     });
