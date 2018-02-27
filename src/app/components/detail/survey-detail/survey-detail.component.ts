@@ -11,7 +11,7 @@ import { routeAnimation } from '../../../animation/router.animation';
   selector: 'app-survey-detail',
   templateUrl: './survey-detail.component.html',
   styleUrls: ['./survey-detail.component.css'],
-  animations: [routeAnimation.animate()]
+  animations: [routeAnimation]
 })
 export class SurveyDetailComponent implements OnInit {
   private filterSurvey: Qcm[];

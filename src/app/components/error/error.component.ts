@@ -5,7 +5,7 @@ import { routeAnimation } from '../../animation/router.animation';
   selector: 'app-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.css'],
-  animations: [routeAnimation.animate()]
+  animations: [routeAnimation]
 })
 export class ErrorComponent implements OnInit {
 

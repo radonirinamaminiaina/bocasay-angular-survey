@@ -8,7 +8,7 @@ import { routeAnimation } from '../../../animation/router.animation';
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
-  animations: [routeAnimation.animate()]
+  animations: [routeAnimation]
 })
 export class SurveyListComponent implements OnInit {
   surveys: Survey[];
