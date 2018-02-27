@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HostBinding } from '@angular/core';
+
 import { SurveyDetail } from '../../../model/survey-detail';
 import { config } from '../../../config/config';
-import { ActivatedRoute } from '@angular/router';
 import { Qcm } from '../../../model/survey-qcm';
+import { routeAnimation } from '../../../animation/router.animation';
 
 @Component({
   selector: 'app-survey-detail',
   templateUrl: './survey-detail.component.html',
-  styleUrls: ['./survey-detail.component.css']
+  styleUrls: ['./survey-detail.component.css'],
+  animations: [routeAnimation.animate()]
 })
 export class SurveyDetailComponent implements OnInit {
   private filterSurvey: Qcm[];
@@ -17,6 +21,8 @@ export class SurveyDetailComponent implements OnInit {
   param: string;
 
   constructor(private route: ActivatedRoute) { }
+
+  @HostBinding('@fadeInOut')
 
   ngOnInit() {
     this.fetchDetail();
