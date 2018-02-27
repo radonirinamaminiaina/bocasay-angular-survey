@@ -58,7 +58,12 @@ export class SurveyDetailComponent implements OnInit {
     this.route.data.subscribe((data: { detail: SurveyDetail[]}) => dataFetch(data.detail));
     this.route.params.subscribe(params => this.param = params['id']);
   }
-  filter (survey: Qcm[], value: string | number) {
+  /**
+   * filter
+   * @param survey <Qcm>
+   * @param value <string>
+   */
+  filter (survey: Qcm[], value: string) {
     // Deep copy
     const copySurvey = [...this.filterSurvey];
     let filtered: Qcm[] = copySurvey;
