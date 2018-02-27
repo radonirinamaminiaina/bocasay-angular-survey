@@ -39,3 +39,6 @@ body {
 #page .container {
   margin-left: 200px;
 }
+th {
+  cursor: pointer;
+}

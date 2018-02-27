@@ -15,6 +15,7 @@ import { routeAnimation } from '../../../animation/router.animation';
 })
 export class SurveyDetailComponent implements OnInit {
   private filterSurvey: Qcm[];
+  private sortParams: Boolean = false;
   surveyDetail: SurveyDetail[];
   surveyLabel: string[];
   surveyValue: number[];
@@ -81,6 +82,25 @@ export class SurveyDetailComponent implements OnInit {
     this.surveyDetail.forEach(item => {
       if (item.type === 'qcm') {
         item.result = filtered;
+      }
+    });
+  }
+  sort (caretUp: HTMLElement, caretDown: HTMLElement) {
+    const changeCaretStatus = (visible: string, invisible: string) => {
+      caretUp.style.display = visible;
+      caretDown.style.display = invisible;
+    };
+    this.surveyDetail.forEach(item => {
+      if (item.type === 'date') {
+        if (this.sortParams) {
+          this.sortParams = false;
+          item.result.reverse();
+          changeCaretStatus('inline-block', 'none');
+        } else {
+          this.sortParams = true;
+          item.result.sort();
+          changeCaretStatus('none', 'inline-block');
+        }
       }
     });
   }
