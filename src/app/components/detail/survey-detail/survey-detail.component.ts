@@ -62,7 +62,7 @@ export class SurveyDetailComponent implements OnInit {
     // Deep copy
     const copySurvey = [...this.filterSurvey];
     let filtered: Qcm[] = copySurvey;
-    if (+value !== 0 && value !== '') {
+    if (+value >= 0 && value !== '') {
       // return filtered element according to the criteria of search field
       filtered = this.filterSurvey.filter(item => +value === +item.value);
     }
