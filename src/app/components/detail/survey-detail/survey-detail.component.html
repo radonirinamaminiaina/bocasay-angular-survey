@@ -1,74 +1,79 @@
 <div class="container detail">
   <h1>Detail of {{param}}</h1>
-  <p>
-    <a [routerLink]="['/survey']" class="btn btn-success">Back to list</a>
+  <p class="text-right">
+    <a class="btn btn-success" [routerLink]="['/survey']">Back to list</a>
   </p>
   <div class="row">
     <div class="result" *ngFor="let survey of surveyDetail; let i = index" [ngClass]="{'col-md-6': i > 0, 'col-md-12': i == 0}">
       <div class="card">
-          <div class="card-body">
-              <h5 class="card-title text-uppercase">{{survey.type}}</h5>
-              <h6 class="card-subtitle text-muted">{{survey.label}}</h6> 
-              <div id="chart-wrapper" *ngIf="survey.type === 'qcm'">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light" id="filter">
-                  <div class="collapse navbar-collapse">
-                    <form class="form-inline my-2 my-lg-0">
-                      <label>Filter: </label>
-                      <input class="form-control mr-sm-2" type="search" (keyup)="filter(survey.result, search.value)" #search placeholder="Search" aria-label="Search">
-                    </form>
-                  </div>
-                </nav>
-                <div class="row">
-                  <div class="col-md-4">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Products</th>
-                          <th>Count</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let product of survey.result" >
-                          <td>{{product.name}}</td>
-                          <td><strong>{{product.value}}</strong></td>
-                        </tr>
-                      </tbody>
-                      <tfoot *ngIf="survey.result.length === 0">
-                        <tr>
-                          <td colspan="2">
-                              <div class="alert alert-danger">Not Found</div>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                  <div class="col-md-8">
-                    <canvas id="chart" appChart [attr.data-value]="surveyValue | json" [attr.data-label]="surveyLabel | json"></canvas>
-                  </div>
+        <div class="card-header">
+            <h5 class="text-uppercase">{{survey.type}}</h5>
+        </div>
+        <div class="card-body">
+            <h6 class="card-title">{{survey.label}}</h6> 
+            <div id="chart-wrapper" *ngIf="survey.type === 'qcm'">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light" id="filter">
+                <div class="collapse navbar-collapse">
+                  <form class="form-inline my-2 my-lg-0">
+                    <label>Filter: </label>
+                    <input class="form-control mr-sm-2" type="search" aria-label="Search" (keyup)="filter(survey.result, search.value)" #search placeholder="Search">
+                  </form>
                 </div>
-              </div>
-              <div id="number" *ngIf="survey.type === 'numeric'">
-                <a href="" class="btn disabled" [ngClass]="{'btn-primary': survey.result <= 7000, 'btn-warning': survey.result <= 5000, 'btn-danger': survey.result <= 1000}">{{survey.result}}</a>
-              </div>
-              <div id="date" *ngIf="survey.type === 'date'">
+              </nav>
+              <div class="row">
+                <div class="col-md-4">
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>Date</th>
-                        <th>Hours</th>
+                        <th>Products</th>
+                        <th>Count</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let date of survey.result" >
-                        <td>{{date | date:"yyyy/dd/MM"}}</td>
-                        <td>{{date | date:"HH:mm"}}</td>
+                      <tr *ngFor="let product of survey.result">
+                        <td>{{product.name}}</td>
+                        <td><strong>{{product.value}}</strong></td>
                       </tr>
                     </tbody>
+                    <tfoot *ngIf="survey.result.length === 0">
+                      <tr>
+                        <td colspan="2">
+                            <div class="alert alert-danger">Not Found</div>
+                        </td>
+                      </tr>
+                    </tfoot>
                   </table>
+                </div>
+                <div class="col-md-8">
+                  <canvas id="chart" appChart [attr.data-value]="surveyValue | json" [attr.data-label]="surveyLabel | json"></canvas>
+                </div>
               </div>
-          </div>
+            </div>
+            <div id="number" *ngIf="survey.type === 'numeric'">
+              <a class="btn disabled" href [ngClass]="{'btn-primary': survey.result <= 7000, 'btn-warning': survey.result <= 5000, 'btn-danger': survey.result <= 1000}">{{survey.result}}</a>
+            </div>
+            <div id="date" *ngIf="survey.type === 'date'">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Hours</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let date of survey.result">
+                      <td>{{date | date:"yyyy/dd/MM"}}</td>
+                      <td>{{date | date:"HH:mm"}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
       </div>
     </div>
   </div>
+  <p class="text-right">
+    <a class="btn btn-success" [routerLink]="['/survey']">Back to list</a>
+  </p>
 </div>
 

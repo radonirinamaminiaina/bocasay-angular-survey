@@ -22,3 +22,13 @@ table {
 .alert {
   margin: 0;
 }
+.card-header h5 {
+  margin: 0;
+}
+h1 {
+  padding: 20px 0 10px;
+  font-size: 30px;
+}
+.detail {
+  padding-bottom: 40px;
+}
