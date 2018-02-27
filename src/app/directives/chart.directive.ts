@@ -9,11 +9,17 @@ export class ChartDirective {
   constructor(private element: ElementRef) {
     setTimeout(() => this.drawChart(element), 50);
   }
-
+  /**
+   * drawChart
+   * @param el <ElementRef>
+   */
   async drawChart (el) {
     const canvas = <HTMLCanvasElement> el.nativeElement;
 
     if (canvas.tagName === 'CANVAS') {
+      // using dynamic import to load chart.js
+      // we only need chart.js into detail component
+      // therefore, we import it when we need
       const Chart = await import('chart.js');
       const parseJson = (json) => JSON.parse(json);
       const options = {

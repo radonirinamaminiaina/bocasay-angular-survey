@@ -14,7 +14,10 @@ export class SurveyListComponent implements OnInit {
   ngOnInit() {
     this.fetchList();
   }
-
+  /**
+   * fetchList
+   * fetch list of survey
+   */
   async fetchList () {
     const data = await fetch(config.api.list);
     const finalData = await data.json();
