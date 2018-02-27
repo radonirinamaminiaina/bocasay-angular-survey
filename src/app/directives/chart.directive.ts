@@ -39,7 +39,10 @@ export class ChartDirective {
           labels: parseJson(canvas.dataset.label)
         },
         options: {
-          responsive: true
+          responsive: true,
+          animation: {
+            easing: 'easeOutCubic'
+          }
         }
       };
       // build chart
